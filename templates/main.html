@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Untree.co" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/tiny-slider.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <title>
+      {{ infor.name }} - {% block title %} {% endblock %}
+    </title>
+  </head>
+  <body>
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+          <span class="icofont-close js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <nav class="site-nav">
+      <div class="container">
+        <div class="menu-bg-wrap">
+          <div class="site-navigation">
+            <a href="{% url 'index' %}" class="logo m-0 float-start">{{ infor.name }}</a>
+
+            <ul
+              class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end"
+            >
+              <li class="active"><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+              <li><a href="contact.html">Apply</a></li>
+            </ul>
+
+            <a
+              href="{% url 'index' %}#"
+              class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none"
+              data-toggle="collapse"
+              data-target="#main-navbar"
+            >
+              <span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% block content %}
+   
+    {% endblock content %}
+    <div class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="row justify-content-center align-items-center">
+          
+            
+          </div>  
+          <div class="col-lg-4">
+            <div class="widget">
+              <h3>Contact</h3>
+              <address>{{ infor.address }}</address>
+              <ul class="list-unstyled links">
+                <li><a href="tel://{{infor.phone_number_1}}">{{infor.phone_number_1}}</a></li>
+                {% if  infor.phone_number_2 %}<li><a href="tel://{{infor.phone_number_2}}">{{infor.phone_number_2}}</a></li>{% endif %}
+                <li>
+                  <a href="mailto:{{infor.email}}">{{infor.email}}</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.widget -->
+          </div>
+          <!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <div class="widget">
+              <h3>Links</h3>
+              <ul class="list-unstyled float-start links">
+                <!-- <li><a href="index.html#">About us</a></li>
+                <li><a href="index.html#">Services</a></li>
+                <li><a href="index.html#">Vision</a></li>
+                <li><a href="index.html#">Mission</a></li> -->
+                <li><a href="{% url 'contact_us' %}">Contact us</a></li>
+                <li><a href="#">Apply</a></li>
+              </ul>
+              <!-- <ul class="list-unstyled float-start links">
+                <li><a href="index.html#">Partners</a></li>
+                <li><a href="index.html#">Business</a></li>
+                <li><a href="index.html#">Careers</a></li>
+                <li><a href="index.html#">Blog</a></li>
+                <li><a href="index.html#">FAQ</a></li>
+                <li><a href="index.html#">Creative</a></li>
+              </ul> -->
+            </div>
+            <!-- /.widget -->
+          </div>
+          <!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <div class="widget">
+              <h3>Links</h3>
+              <ul class="list-unstyled links">
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Apply</a></li>
+              </ul>
+
+              <ul class="list-unstyled social">
+                <li>
+                  <a href="{% if  infor.instagram_url %}{{ infor.instagram_url}}{% else%}#{% endif %}"><span class="icon-instagram"></span></a>
+                </li>
+                <li>
+                  <a href="{% if  infor.x_url %}{{ infor.x_url}}{% else%}#{% endif %}"><span class="icon-twitter"></span></a>
+                </li>
+                <li>
+                  <a href="{% if  infor.facebook_url %}{{ infor.facebook_url}}{% else%}#{% endif %}"><span class="icon-facebook"></span></a>
+                </li>
+                <li>
+                  <a href="{% if  infor.linkedln_url %}{{ infor.linkedln_url}}{% else%}#{% endif %}"><span class="icon-linkedin"></span></a>
+                </li>
+                <li>
+                  <a href="{% if  infor.whatsapp_url %}{{ infor.whatsapp_url}}{% else%}#{% endif %}"><span class="icon-whatsapp"></span></a>
+                </li>
+                <li>
+                  <a href="{% if  infor.youtube_url %}{{ infor.youtube_url}}{% else%}#{% endif %}"><span class="icon-youtube"></span></a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.widget -->
+          </div>
+          <!-- /.col-lg-4 -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row mt-5">
+          <div class="col-12 text-center">
+            <!-- 
+              **==========
+              NOTE: 
+              Please don't remove this copyright link unless you buy the license here https://untree.co/license/  
+              **==========
+            -->
+
+            <p>
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              . All Rights Reserved. &mdash; {{ infor.name }}
+            </p>
+          
+          </div>
+        </div>
+      </div>
+      <!-- /.container -->
+    </div>
+    <!-- /.site-footer -->
+
+    <!-- Preloader -->
+    <div id="overlayer"></div>
+    <div class="loader">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/tiny-slider.js' %}"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script src="{% static 'js/navbar.js' %}"></script>
+    <script src="{% static 'js/counter.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+  </body>
+</html>
